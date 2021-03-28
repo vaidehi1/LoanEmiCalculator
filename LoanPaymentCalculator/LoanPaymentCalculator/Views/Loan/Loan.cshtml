@@ -1,0 +1,56 @@
+﻿@model LoanPaymentCalculator.Models.LoanModel.CalculateLoanRequest
+@{
+    ViewBag.Title = "Loan";
+}
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/loan")
+<h3>@ViewBag.Message</h3>
+
+<h4>Calculate loan</h4>
+<form>
+    <div class="form-group">
+        <label for="loanAmount">Loan amount</label>
+        <input type="text" class="form-control" id="loanAmount"
+               placeholder="Enter loan amount"
+               >
+    </div>
+    <div class="form-group">
+        <label for="loanInterest">Loan interest</label>
+        <input type="text" class="form-control" id="loanInterest"
+               placeholder="Enter loan interest"
+               >
+    </div>
+    <div class="form-group">
+        <label for="NumOfYear">Number of year</label>
+        <input type="text" class="form-control" id="NumOfYear"
+               placeholder="Enter number of year"
+                >
+    </div>
+    <h3>Loan summary</h3>
+    <h4>EMI is: <span id="Emi"></span></h4>
+    <h4>Monthly interest rate is: <span id="MonthlyRate"></span></h4>
+    <button type="button" id="calculateAllInterest" class="btn btn-primary">Calculate all interest data</button>
+    <button type="button" id="saveLoanData" class="btn btn-primary">Save loan data</button>
+</form>
+<div class="alert alert-danger hidden custom-alert" role="alert" id="recordExists">
+    Record already exists
+</div>
+<div class="alert alert-success hidden custom-alert" role="alert" id="dataSaved">
+    Loan transaction data saved successfully
+</div>
+<h2>All transaction data</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Installment#</th>
+            <th>Opening</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>EMI</th>
+            <th>Closing</th>
+            <th>Cumulative interest</th>
+        </tr>
+    </thead>
+    <tbody id="tblBody"></tbody>
+</table>
